@@ -19,18 +19,19 @@ st.set_page_config(
 # Load environment variables
 load_dotenv()
 
-# Initialize API keys
-phi.api = os.getenv("PHI_API_KEY")
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# Initialize API keys directly from environment variables
+phi_api_key = os.getenv("PHI_API_KEY")
+openai_api_key = os.getenv("OPENAI_API_KEY")
 groq_api_key = os.getenv("GROQ_API_KEY")
 
-# Add API key input fields if keys are not set
-if not phi.api:
-    phi.api = st.sidebar.text_input("Enter PHI API Key:", type="password")
-if not openai.api_key:
-    openai.api_key = st.sidebar.text_input("Enter OpenAI API Key:", type="password")
-if not groq_api_key:
-    groq_api_key = st.sidebar.text_input("Enter Groq API Key:", type="password")
+# Validate API keys
+if not all([phi_api_key, openai_api_key, groq_api_key]):
+    st.error("Missing required API keys. Please ensure the environment variables are set.")
+    st.stop()
+
+# Set API keys
+phi.api = phi_api_key
+openai.api_key = openai_api_key
 
 # Initialize Groq model
 @st.cache_resource
@@ -89,11 +90,6 @@ def extract_content(response):
 # Main app
 def main():
     st.title("Multi-Agent Assistant 🤖")
-    
-    # Check if API keys are set
-    if not all([phi.api, openai.api_key, groq_api_key]):
-        st.warning("Please enter all required API keys in the sidebar to continue.")
-        return
     
     # Initialize agents
     web_search_agent, financial_agent, multi_agent = init_agents()
@@ -157,4 +153,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
