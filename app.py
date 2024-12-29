@@ -52,7 +52,7 @@ def init_agents():
         model=groq_model,
         tools=[DuckDuckGo()],
         instructions=["Always include the sources"],
-        show_tools_calls=True,
+        show_tools_calls=False,
         markdown=True,
     )
 
@@ -63,7 +63,7 @@ def init_agents():
         tools=[YFinanceTools(stock_price=True, analyst_recommendations=True, 
                            stock_fundamentals=True, company_news=True)],
         instructions=["Use tables to display the Data"],
-        show_tools_calls=True,
+        show_tools_calls=False,
         markdown=True,
     )
 
@@ -71,7 +71,7 @@ def init_agents():
         team=[web_search_agent, financial_agent],
         model=groq_model,
         instructions=["Always include the sources", "Use tables to display the Data"],
-        show_tools_calls=True,
+        show_tools_calls=False,
         markdown=True,
     )
     
