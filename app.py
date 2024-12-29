@@ -89,7 +89,7 @@ def extract_content(response):
 
 # Main app
 def main():
-    st.title("Multi-Agent Financial Analyst Engine 🤖")
+    st.title("Multi-Agent Financial Analyst Engine")
     
     # Initialize agents
     web_search_agent, financial_agent, multi_agent = init_agents()
