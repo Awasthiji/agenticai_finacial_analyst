@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 
 # Page configuration
 st.set_page_config(
-    page_title="Multi-Agent Assistant",
+    page_title="Multi-Agent Financial Analyst Engine",
     page_icon="🤖",
     layout="wide"
 )
