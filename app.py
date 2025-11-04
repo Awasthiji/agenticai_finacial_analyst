@@ -38,7 +38,7 @@ openai.api_key = openai_api_key
 def init_groq_model():
     return Groq(
         api_key=groq_api_key,
-        id="groq/compound"
+        id="meta-llama/llama-4-scout-17b-16e-instruct"
     )
 
 # Initialize agents
