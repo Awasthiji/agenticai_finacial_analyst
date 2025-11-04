@@ -38,7 +38,7 @@ openai.api_key = openai_api_key
 def init_groq_model():
     return Groq(
         api_key=groq_api_key,
-        id="mixtral-8x7b-32768"
+        id="groq/compound"
     )
 
 # Initialize agents
